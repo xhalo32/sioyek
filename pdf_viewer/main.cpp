@@ -612,6 +612,10 @@ MainWidget* handle_args(const QStringList& arguments) {
 	if (should_create_new_window) {
 		target_window = new MainWidget(windows[0]);
 		//target_window->run_multiple_commands(STARTUP_COMMANDS);
+
+		if (DEFAULT_DARK_MODE) {
+			target_window->toggle_dark_mode();
+		}
 		target_window->command_manager->create_macro_command("", STARTUP_COMMANDS)->run(target_window);
 		target_window->apply_window_params_for_one_window_mode(true);
 		target_window->show();
